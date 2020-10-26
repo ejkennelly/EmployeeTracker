@@ -97,3 +97,14 @@ function viewAllDepartments() {
             start()
         })
 }
+var roleArr = [];
+function selectRole() {
+    connection.query("SELECT * FROM role", function (err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+            roleArr.push(res[i].title);
+        }
+
+    })
+    return roleArr;
+}
