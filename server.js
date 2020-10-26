@@ -266,3 +266,8 @@ function addDepartment() {
         )
     })
 }
+//Bonus-Delete employee/dept/role, see total salaries for a dept, update managers, see employees by managers
+function quit() {
+    connection.end();
+    process.exit();
+}
