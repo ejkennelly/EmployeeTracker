@@ -97,6 +97,7 @@ function viewAllDepartments() {
             start()
         })
 }
+//View role queries for add employee prompt
 var roleArr = [];
 function selectRole() {
     connection.query("SELECT * FROM role", function (err, res) {
@@ -107,4 +108,16 @@ function selectRole() {
 
     })
     return roleArr;
+}
+//If manager field isn't null push them into managers array
+var managersArr = [];
+function selectManager() {
+    connection.query("SELECT first_name, last_name FROM employee WHERE manager_id IS NULL", function (err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+            managersArr.push(res[i].first_name);
+        }
+
+    })
+    return managersArr;
 }
