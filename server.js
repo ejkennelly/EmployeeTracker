@@ -1,4 +1,4 @@
-//Dependencies//
+//Dependencies
 const inquirer = require("inquirer")
 const mysql = require("mysql")
 
@@ -11,13 +11,13 @@ const connection = mysql.createConnection({
 });
 
 
-//Connection ID//
+//Connection ID
 connection.connect(function (err) {
     if (err) throw err
     console.log("Connected as Id" + connection.threadId)
     start();
 });
-//Initial Prompt //
+//Initial Prompt 
 function start() {
     inquirer.prompt([
         {
@@ -69,4 +69,13 @@ function start() {
 
         }
     })
+}
+//View All Employees
+function viewAllEmployees() {
+    connection.query("SELECT employee.first_name, employee.last_name, role.title, role.salary, department.name, CONCAT(e.first_name, ' ' ,e.last_name) AS Manager FROM employee INNER JOIN role on role.id = employee.role_id INNER JOIN department on department.id = role.department_id left join employee e on employee.manager_id = e.id;",
+        function (err, res) {
+            if (err) throw err
+            console.table(res)
+            startPrompt()
+        })
 }
