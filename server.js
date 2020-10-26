@@ -88,3 +88,12 @@ function viewAllRoles() {
             start()
         })
 }
+//View employee by dept
+function viewAllDepartments() {
+    connection.query("SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;",
+        function (err, res) {
+            if (err) throw err
+            console.table(res)
+            start()
+        })
+}
