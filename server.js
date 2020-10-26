@@ -36,5 +36,37 @@ function start() {
 
             ]
         }
-    ])
+    ]).then(function (val) {
+        switch (val.choice) {
+            case "View All Employees?":
+                viewAllEmployees();
+                break;
+
+            case "View All Employee's By Roles?":
+                viewAllRoles();
+                break;
+            case "View all Emplyees By Deparments":
+                viewAllDepartments();
+                break;
+
+            case "Add Employee?":
+                addEmployee();
+                break;
+
+            case "Update Employee":
+                updateEmployee();
+                break;
+
+            case "Add Role?":
+                addRole();
+                break;
+
+            case "Add Department?":
+                addDepartment();
+                break;
+            default:
+                quit();
+
+        }
+    })
 }
