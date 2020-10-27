@@ -27,7 +27,7 @@ function start() {
             choices: [
                 "View All Employees?",
                 "View All Employee's By Roles?",
-                "View all Emplyees By Deparments",
+                "View all Employees By Departments",
                 "Update Employee",
                 "Add Employee?",
                 "Add Role?",
@@ -45,7 +45,7 @@ function start() {
             case "View All Employee's By Roles?":
                 viewAllRoles();
                 break;
-            case "View all Emplyees By Deparments":
+            case "View all Employees By Departments":
                 viewAllDepartments();
                 break;
 
@@ -125,12 +125,12 @@ function selectManager() {
 function addEmployee() {
     inquirer.prompt([
         {
-            name: "firstname",
+            name: "firstName",
             type: "input",
             message: "Enter their first name "
         },
         {
-            name: "lastname",
+            name: "lastName",
             type: "input",
             message: "Enter their last name "
         },
@@ -270,4 +270,4 @@ function addDepartment() {
 function quit() {
     connection.end();
     process.exit();
-}
+} 
